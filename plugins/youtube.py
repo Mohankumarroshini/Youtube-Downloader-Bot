@@ -15,8 +15,8 @@ async def ytdl(_, message):
     userLastDownloadTime = user_time.get(message.chat.id)
     try:
         if userLastDownloadTime > datetime.now():
-            wait_time = round((userLastDownloadTime - datetime.now()).total_seconds() / 60, 2)
-            await message.reply_text(f"`Wait {wait_time} Minutes before next Request`")
+            wait_time = round((userLastDownloadTime - datetime.now()).total_seconds() / 30, 2)
+            await message.reply_text(f"`ᴡᴀɪᴛ {wait_time} ᴍɪɴᴜᴛᴇs ʙᴇғᴏʀᴇ ɴᴇxᴛ ʀᴇǫᴜᴇsᴛ`")
             return
     except:
         pass
@@ -31,10 +31,10 @@ async def ytdl(_, message):
                                      timedelta(minutes=youtube_next_fetch)
 
     except Exception:
-        await message.reply_text("`Failed To Fetch Youtube Data... 😔 \nPossible Youtube Blocked server ip \n#error`")
+        await message.reply_text("`sᴏʀʀʏ, ғᴀɪʟᴇᴅ ᴛᴏ ғᴇᴛᴄʜ ʏᴏᴜᴛᴜʙᴇ ᴅᴀᴛᴀ... 😔 \nᴘᴏssɪʙʟᴇ ʏᴏᴜᴛᴜʙᴇ ʙʟᴏᴄᴋᴇᴅ sᴇʀᴠᴇʀ ɪᴘ \n#error`")
         return
     buttons = InlineKeyboardMarkup(list(create_buttons(formats)))
-    sentm = await message.reply_text("Processing Youtube Url 🔎 🔎 🔎")
+    sentm = await message.reply_text("ᴘʀᴏᴄᴇssɪɴɢ ʏᴏᴜʀ ʏᴏᴜᴛᴜʙᴇ ᴜʀʟ  🔎 🔎")
     try:
         # Todo add webp image support in thumbnail by default not supported by pyrogram
         # https://www.youtube.com/watch?v=lTTajzrSkCw
